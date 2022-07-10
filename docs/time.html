@@ -2,14 +2,123 @@
 <head>
   <meta charset="utf-8" />
   <title>time</title>
-  <style>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.3/dayjs.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    #content {
+      position: relative;
+      width: 280px;
+      height: 280px;
+      margin: 0 auto;
+    }
+
+    #time {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 200px;
+      color: #1717F4;
+    }
+
+    #day {
+      height: 32px;
+      line-height: 32px;
+      font-size: 24px;
+    }
+
+    #clock {
+      display: flex;
+      align-items: start;
+      height: 64px;
+      line-height: 64px;
+      font-size: 64px;
+    }
+
+    #clock-separate {
+      height: 56px;
+      line-height: 56px;
+      /* animation: 2s cubic-bezier(0.33, 1, 0.68, 1) infinite clock-separate-animation; */
+    }
+
+    /* @keyframes clock-separate-animation {
+      0% {
+        opacity: 0.1;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0.1;
+      }
+    } */
+
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(-90deg);
+    }
+
+    #background-circle {
+      fill: #fff;
+      stroke: #1717F4;
+      stroke-width: 2px;
+      /* stroke-dasharray: 200 880; */
+    }
   </style>
 </head>
 <body>
-  aaaa
+  <div id="content">
+    <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" id="background">
+      <circle cx="140" cy="140" r="138" id="background-circle"/>
+    </svg>
+    <div id="time">
+      <div id="day"></div>
+      <div id="clock">
+        <span id="clock-hour"></span>
+        <span id="clock-separate">:</span>
+        <span id="clock-minute"></span>
+      </div>
+    </div>
+  </div>
 
   <script type="text/javascript">
+    const dayElement = document.getElementById('day');
+    // const clockElement = document.getElementById('clock');
+    const clockHourElement = document.getElementById('clock-hour');
+    // const clockSeparateElement = document.getElementById('clock-separate');
+    const clockMinuteElement = document.getElementById('clock-minute');
+    const backgroundCircleElement = document.getElementById('background-circle');
+
+
+    const setTime = () => {
+      const now = dayjs();
+      dayElement.textContent = now.format('YYYY.M.D (ddd)');
+      clockHourElement.textContent = now.format('HH');
+      clockMinuteElement.textContent = now.format('mm');
+      // clockSeparateElement.classList.toggle('hidden');
+      backgroundCircleElement.style.strokeDasharray = `${14.44 * (Number(now.format('s')) + 1)} 866.64`;
+    };
+
+    setInterval(setTime, 1000);
   </script>
 </body>
 </html>
