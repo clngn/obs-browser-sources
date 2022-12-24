@@ -25,37 +25,34 @@
       position: relative;
       display: flex;
       align-items: center;
-      gap: 24px;
-      width: 260px;
-      height: 88px;
-      margin: 16px;
+      margin: 50px;
+      gap: 50px;
     }
 
     #time {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 180px;
-      /* color: #000; */
+      margin-top: 12px;
     }
 
     #day {
-      height: 24px;
-      line-height: 24px;
-      font-size: 24px;
+      height: 48px;
+      line-height: 48px;
+      font-size: 48px;
     }
 
     #clock {
       display: flex;
       align-items: start;
-      height: 64px;
-      line-height: 64px;
-      font-size: 64px;
+      height: 120px;
+      line-height: 120px;
+      font-size: 120px;
     }
 
     #clock-separate {
-      height: 56px;
-      line-height: 56px;
+      height: 100px;
+      line-height: 100px;
       animation: 2s cubic-bezier(0.33, 1, 0.68, 1) infinite clock-separate-animation;
       /* animation: 2s steps(1,end) infinite clock-separate-animation; */
     }
@@ -82,9 +79,10 @@
 </head>
 <body>
   <div id="content">
-    <svg width="16" height="88" viewBox="0 0 16 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 0H8H16V4H8V84H16V88H8H0V84V4V0Z" fill="currentColor"/>
+    <svg width="30" height="180" viewBox="0 0 30 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0H30V4H15V176H30V180H0V0Z" fill="currentColor"/>
     </svg>
+
 
     <div id="time">
       <div id="day"></div>
@@ -96,8 +94,8 @@
       </div>
     </div>
 
-    <svg width="16" height="88" viewBox="0 0 16 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M16 0H0V4H8V84H0V88H16V0Z" fill="currentColor"/>
+    <svg width="30" height="180" viewBox="0 0 30 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0V4H15V176H0V180H30V0H0Z" fill="currentColor"/>
     </svg>
   </div>
 
