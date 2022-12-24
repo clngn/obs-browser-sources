@@ -1,0 +1,121 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>time</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@700&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.3/dayjs.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      text-align: center;
+      font-family: 'IBM Plex Sans Condensed', sans-serif;
+      font-weight: 700;
+    }
+
+    #content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      width: 260px;
+      height: 88px;
+      margin: 16px;
+    }
+
+    #time {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 180px;
+      color: #000;
+    }
+
+    #day {
+      height: 24px;
+      line-height: 24px;
+      font-size: 24px;
+    }
+
+    #clock {
+      display: flex;
+      align-items: start;
+      height: 64px;
+      line-height: 64px;
+      font-size: 64px;
+    }
+
+    #clock-separate {
+      height: 56px;
+      line-height: 56px;
+      animation: 2s cubic-bezier(0.33, 1, 0.68, 1) infinite clock-separate-animation;
+      /* animation: 2s steps(1,end) infinite clock-separate-animation; */
+    }
+
+    @keyframes clock-separate-animation {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(-90deg);
+    }
+  </style>
+</head>
+<body>
+  <div id="content">
+    <svg width="16" height="88" viewBox="0 0 16 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0H8H16V4H8V84H16V88H8H0V84V4V0Z" fill="black"/>
+    </svg>
+
+    <div id="time">
+      <div id="day"></div>
+      <div id="clock">
+
+        <span id="clock-hour"></span>
+        <span id="clock-separate">:</span>
+        <span id="clock-minute"></span>
+      </div>
+    </div>
+
+    <svg width="16" height="88" viewBox="0 0 16 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 0H0V4H8V84H0V88H16V0Z" fill="black"/>
+    </svg>
+  </div>
+
+  <script type="text/javascript">
+    const dayElement = document.getElementById('day');
+    // const clockElement = document.getElementById('clock');
+    const clockHourElement = document.getElementById('clock-hour');
+    // const clockSeparateElement = document.getElementById('clock-separate');
+    const clockMinuteElement = document.getElementById('clock-minute');
+
+
+    const setTime = () => {
+      const now = dayjs();
+      dayElement.textContent = now.format('YYYY.M.D (ddd)');
+      clockHourElement.textContent = now.format('HH');
+      clockMinuteElement.textContent = now.format('mm');
+    };
+
+    setInterval(setTime, 1000);
+  </script>
+</body>
+</html>
